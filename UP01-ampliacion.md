@@ -1,7 +1,7 @@
 # UP01 (AMPLIACIÓN): FUNDAMENTOS Y PROCESO DE DESARROLLO DEL SOFTWARE
 
 > [!IMPORTANT]
-> Los apartados **1 a 4** coinciden con el tema de la UP01 que ya habéis trabajado; solo se han añadido algunas imágenes. **Lo nuevo empieza en el apartado 5**.
+> Los apartados **1 a 4** coinciden con el tema de la UP01 que ya habéis trabajado; solo se han añadido algunas imágenes. **Lo nuevo empieza en el apartado 5**. Incluye también un apartado 0 de nivelación y preparación de herramientas, y un índice de objetivos y contenidos.
 
 ## ÍNDICE
 
