@@ -160,20 +160,20 @@ Podemos agruparlos en varias categorías según su propósito:
 - **Ofimática:** Programas para la productividad en la oficina. **Ejemplos**: procesadores de texto (Word), hojas de cálculo (Excel), programas de presentaciones (PowerPoint). A menudo se venden en paquetes llamados **suites ofimáticas**.
 - **Navegadores y Comunicación:** Herramientas para acceder a internet y comunicarnos. **Ejemplos**: Google Chrome, Mozilla Firefox, Slack, Zoom.
 - **Diseño y Multimedia:** Software para la creación y edición de contenido visual y de audio. **Ejemplos**: Adobe Photoshop, AutoCAD, Spotify, VLC Media Player.
-- **Gestión Empresarial:** Programas para automatizar procesos de negocio. **Ejemplos**: software de contabilidad (Contasimple), sistemas de gestión de almacenes, o aplicaciones **desarrolladas a medida** para una empresa específica.
-- **Bases de Datos y Desarrollo:** Herramientas para gestionar grandes volúmenes de datos y para crear nuevo software. **Ejemplos**: MySQL, Oracle, y los **Entornos de Desarrollo Integrado (IDE)** como Visual Studio Code o Eclipse.
+- **Gestión Empresarial:** Programas para automatizar procesos de negocio. **Ejemplos**: software de facturación y gestión comercial (Factusol), sistemas de gestión de almacenes, o aplicaciones **desarrolladas a medida** para una empresa específica.
+- **Bases de Datos y Desarrollo:** Herramientas para gestionar grandes volúmenes de datos y para crear nuevo software. **Ejemplos**: MySQL, Oracle, y los **Entornos de Desarrollo Integrado (IDE)** como Visual Studio Code o IntelliJ IDEA.
 
 Dentro del software de aplicación, especialmente en el entorno empresarial, es útil distinguir cómo se adquiere y adapta el software:
 
 - **Software COTS (Commercial-Off-The-Shelf):** Es software "de estantería", un producto estándar creado para un mercado masivo. Se compra y se usa tal cual. **Ejemplo:** Microsoft Office, Adobe Photoshop.
-- **Software a Medida (Bespoke):** Es software creado desde cero para un cliente específico, cubriendo necesidades que ningún producto estándar puede satisfacer. Es como un traje hecho a medida. **Ejemplo:** el sistema de reservas de Renfe.
-- **Software Configurable/Parametrizable:** Es un híbrido. Se parte de un software estándar muy potente y complejo (un "core") que luego se adapta y configura extensamente para los procesos específicos de una empresa, sin alterar el código fuente original. **Ejemplo:** los sistemas ERP como **SAP** o Salesforce, que son moldeados por consultores para cada cliente.
+- **Software a Medida (Bespoke):** Es software creado desde cero para un cliente específico, cubriendo necesidades que ningún producto estándar puede satisfacer. **Ejemplo:** el sistema de reservas de Renfe.
+- **Software Configurable/Parametrizable:** Es un híbrido. Se parte de un software estándar muy potente y complejo (un "core") que luego se adapta y configura extensamente para los procesos específicos de una empresa, sin alterar el código fuente original. **Ejemplo:** los sistemas ERP como **SAP** o Salesforce, que son adaptados por consultores a las especificidades de cada cliente.
 
 En resumen, el **software de sistema** hace que el ordenador *funcione*, mientras que el **software de aplicación** hace que el ordenador sea *útil* para nosotros.
 
 ### 1.3. CALIDAD: CARACTERÍSTICAS DESEABLES DE LOS PROGRAMAS
 
-Las características que definen un software de calidad se pueden agrupar en tres perspectivas principales: cómo opera, cómo se mantiene y cómo se adapta a nuevos entornos.
+Las características que definen un software de calidad se pueden agrupar en tres perspectivas principales: cómo opera, cómo se mantiene y cómo se adapta a nuevos entornos. 
 
 #### 1.3.1. Características Operativas (¿Funciona bien?)
 
@@ -203,6 +203,8 @@ Evalúan la capacidad del software para adaptarse a diferentes entornos y contex
 - **Reusabilidad**: El grado en que los componentes del software (clases, módulos, funciones) pueden ser extraídos y utilizados en el desarrollo de otros programas.
 - **Interoperabilidad**: La capacidad del software para comunicarse e intercambiar datos de forma efectiva con otros sistemas o aplicaciones, por ejemplo, a través de APIs.
 
+Para saber más, podéis consultar la norma **ISO 25010:2023**. Dicha norma plantea nueve características principales de calidad de software, cada una enfocada en un aspecto específico del producto y su comportamiento. Las normas ISO no son abiertas, pero podéis encontrar resúmenes en los que se desarrollan sus categorías por si preferís usar una taxonomía más formal y estandarizada.
+
 ## 2. LENGUAJES DE PROGRAMACIÓN: DEFINICIÓN Y CONCEPTOS
 
 ### 2.1. DEFINICIÓN
@@ -214,7 +216,7 @@ En los inicios de la computación, los programas se escribían directamente en e
 Para solucionar esto, nacieron los **lenguajes de programación**. Su objetivo es servir de **puente entre la lógica humana y las instrucciones del hardware**. Nos permiten escribir órdenes con una notación más cercana a nuestro pensamiento, que luego un **compilador** o un **intérprete** se encarga de traducir de nuevo a ese código máquina de ceros y unos.
 
 Podemos definirlos formalmente como:
-> Un sistema de notación formal, compuesto por un conjunto de símbolos y reglas (gramática), que permite a un programador escribir instrucciones para controlar el comportamiento de un sistema informático.
+> Un sistema de notación formal, compuesto por un conjunto de símbolos (tokens) y reglas (gramática), que permite a un programador escribir instrucciones para controlar el comportamiento de un sistema informático.
 
 ---
 
@@ -284,27 +286,36 @@ El **nivel de abstracción** mide la distancia entre el lenguaje y el hardware d
 
 **Bajo Nivel (1GL - Primera Generación)**
 
-- **Lenguaje Máquina**: Es el único idioma que la CPU entiende de forma nativa. Consiste en secuencias de ceros y unos. Hoy en día, ningún programador escribe directamente en código máquina; es el destino final al que los compiladores traducen nuestro código. Ejemplo: la secuencia binaria `1110101100010001` (`0xEB11` en hexadecimal) en la arquitectura x86 (la típica de nuestros PCs) produce un salto a la posición relativa `0x11`.
+- **Lenguaje Máquina**: Es el único idioma que la CPU entiende de forma nativa. Consiste en secuencias de ceros y unos. Hoy en día, ningún programador escribe directamente en código máquina; es el destino final al que los compiladores traducen nuestro código. Ejemplo: la secuencia binaria `1110101100010001` (`0xEB11` en hexadecimal) en la arquitectura x86 (la típica de nuestros PCs) produce un salto a la posición relativa `0x11` --> `JMP 0x11` en lenguaje ensamblador.
 
-**Nivel Intermedio (2GL y algunos 3GL)**
+**Nivel Intermedio (2GL)**
 
-- **Lenguaje Ensamblador (2GL)**: El lenguaje ensamblador es una representación simbólica del código máquina de un procesador específico. Utiliza instrucciones nemotécnicas como `MOV`, `ADD` o `JMP`, que reflejan operaciones básicas directamente ejecutables por la CPU, en lugar de cadenas de ceros y unos.
+- **Lenguaje Ensamblador (2GL)**: Es una representación simbólica del código máquina de un procesador concreto. En lugar de ceros y unos utiliza **mnemónicos** como `MOV`, `ADD` o `JMP`, cada uno de los cuales se corresponde prácticamente uno a uno con una instrucción de la CPU. Un programa llamado *ensamblador* se encarga de esa traducción.
+  - **Ligado a la arquitectura**: cada familia de procesadores (x86, ARM, RISC-V…) tiene su propio juego de instrucciones, por lo que un programa en ensamblador no es portable.
+  - **Control total del hardware**: da acceso directo a registros, memoria y periféricos. Por eso se sigue usando en sistemas embebidos, controladores (*drivers*), cargadores de arranque (*bootloaders*) y partes críticas de los sistemas operativos.
+  - **Eficiencia**: hoy los compiladores generan código casi tan eficiente como el escrito a mano, así que el ensamblador se reserva para lo que un lenguaje de alto nivel no permite hacer o para optimizaciones muy concretas.
 
-Este lenguaje está completamente ligado a la arquitectura concreta para la que se programa, ya que cada tipo de procesador tiene su propio conjunto de mnemónicos e instrucciones. Programar en ensamblador permite un control extremadamente preciso del hardware, lo que resulta esencial en ámbitos como sistemas embebidos, desarrollo de controladores (drivers), bootloaders, partes críticas de sistemas operativos y tareas que exigen la máxima optimización de recursos. A pesar de su dificultad y baja portabilidad, otorga ventajas como el acceso directo a los recursos internos (registros, memoria, periféricos) y la posibilidad de generar código muy eficiente en términos de velocidad y consumo. Cabe mencionar que, los compiladores modernos de lenguajes de alto nivel suelen generar código casi tan eficiente como el ensamblador, aunque este sigue siendo insustituible para manipulación directa del hardware y casos de máxima optimización.
+> [!NOTE]
+> Algunos autores incluyen **C** en el nivel intermedio: aunque es un 3GL, sus punteros permiten manipular la memoria casi tan directamente como en ensamblador. Por eso es el lenguaje habitual de sistemas operativos y *drivers*.
 
-- **Alto Nivel (3GL y 4GL)**
-  - **Tercera Generación (3GL)**: Son la gran mayoría de lenguajes de propósito general. Se centran en la lógica del algoritmo y abstraen por completo el hardware. Una sola instrucción en 3GL puede equivaler a docenas de instrucciones en código máquina. **Ejemplos**: C++, Java, Python, C#, JavaScript.
-  - **Cuarta Generación (4GL)**: Son lenguajes de **dominio específico** (DSL), diseñados para resolver problemas en un área concreta de forma muy eficiente, reduciendo drásticamente el código necesario. **Ejemplos**: **SQL** (para bases de datos), MATLAB (para cálculo numérico), R (para estadística).
+**Alto Nivel (3GL y 4GL)**
 
-En términos generales podemos decir que los lenguajes de 3GL se centran más en el "cómo" (algoritmos y estructuras de datos), mientras que los 4GL se centran en el "qué" (describir el problema y la solución de alto nivel).
+- **Tercera Generación (3GL)**: Son la gran mayoría de lenguajes de **propósito general**. Se centran en la lógica del algoritmo y abstraen los detalles del hardware: una sola instrucción puede equivaler a decenas de instrucciones máquina, y el mismo código puede llevarse a otras arquitecturas. **Ejemplos**: C, C++, Java, Kotlin, Python, C#, JavaScript.
+- **Cuarta Generación (4GL)**: Son lenguajes orientados a un **dominio específico**, diseñados para resolver problemas de un área concreta con muy poco código. **Ejemplos**: **SQL** (bases de datos), MATLAB (cálculo numérico), R (estadística).
 
->[!NOTE]
-> Algunos lenguajes de **3GL como C** son a menudo considerados de "nivel intermedio" porque, aunque son de alto nivel, proporcionan herramientas (como los punteros) que permiten una manipulación de la memoria casi tan directa como en ensamblador.
+Simplificando mucho, en un 3GL describimos **cómo** se resuelve el problema, paso a paso, mientras que en un 4GL describimos **qué** queremos obtener.
 
-- **Nivel Muy Alto (5GL)** 💡
-  - **Quinta Generación**: También llamados lenguajes lógicos o declarativos avanzados. El programador se centra en describir las restricciones del problema y el estado final deseado, y el sistema, a menudo usando técnicas de IA (que no LLMs), deduce la solución. **Ejemplos**: Prolog, Mercury.
+> [!NOTE]
+> La frontera entre 3GL y 4GL no es nítida. Lenguajes de propósito general como Kotlin o C# permiten escribir pequeños lenguajes de dominio dentro de su propio código (los scripts de Gradle en Kotlin, las consultas LINQ en C#). A la inversa, SQL tiene extensiones procedurales, como PL/SQL, con variables, bucles y condicionales propios de un 3GL.
+>
+> Ojo: generación y **paradigma** son criterios distintos. Que un lenguaje permita un estilo declarativo no lo convierte en un 4GL.
 
-Quizá, con el advenimiento de los LLMs empecemos a hablar de los lenguajes de sexta generación, donde el programador describe el problema en lenguaje natural y la IA genera el código necesario para resolverlo.
+**Nivel Muy Alto (5GL)**
+
+- **Quinta Generación (5GL)**: El programador describe los **hechos, reglas y restricciones** del problema, y es el propio sistema, mediante un motor de inferencia, el que busca la solución. El término se popularizó en los años 80 con el proyecto japonés de *Ordenadores de Quinta Generación*, centrado en la programación lógica. **Ejemplos**: Prolog, Mercury.
+
+> [!TIP]
+> 💡 **Para pensar**: con los LLMs ya hay quien habla de una "sexta generación", en la que describimos el problema en lenguaje natural y la IA genera el código. ¿Es el lenguaje natural un lenguaje de programación? Pista: piensa en la ambigüedad y en si la misma petición produce siempre el mismo resultado.
 
 ![Tuit de Andrej Karpathy (24/01/2023): "The hottest new programming language is English"](img/UP01/tweet-karpathy.png)
 
@@ -359,6 +370,8 @@ Por ejemplo, un objeto `Lavadora` puede tener atributos como `peso_de_la_carga` 
 
 **Ejemplos de lenguajes con fuerte soporte a POO**: Java, C#, C++, Python, Ruby.
 
+![Paradigma imperativo en tres variantes con el ejemplo de una lavadora: imperativo puro con GOTO, programación estructurada con funciones y orientada a objetos con herencia](img/UP01/paradigma-imperativo.png)
+
 ---
 
 #### 3.3.2. Paradigma Declarativo
@@ -369,12 +382,39 @@ En este paradigma, le dices qué quieres. El programador no describe el algoritm
 
 Se basa en la lógica formal. El programador define un conjunto de **hechos** (cosas que son verdad) y **reglas** lógicas. Luego, puede hacer "preguntas" al sistema, que utilizará la inferencia lógica para deducir la respuesta. **Ejemplo**: En **Prolog**, se pueden definir reglas como "Sócrates es un hombre" y "Todos los hombres son mortales", y luego preguntar "¿Es Sócrates mortal?".
 
+Ejemplo de código en Prolog (ilustrativo):
+
+```prolog
+% Hechos
+hombre(socrates).
+hombre(platon).
+
+% Regla
+mortal(X) :- hombre(X).
+
+% Consulta
+?- mortal(socrates). % Respuesta: true
+```
+
 ##### Programación Funcional
 
 Se inspira en las matemáticas. Trata la computación como la evaluación de funciones matemáticas y evita el estado mutable y los datos compartidos. Sus principios clave son el uso de **funciones puras** (que para la misma entrada, siempre producen la misma salida, sin efectos secundarios) y la **inmutabilidad** (los datos no se modifican una vez creados).
 
 - **Ejemplo**: En lugar de un bucle para duplicar los números de una lista, se usarían funciones que operan sobre colecciones: `numeros.map(n -> n * 2)`.
 - **Lenguajes**: Haskell, LISP, y características funcionales en Python, JavaScript, etc.
+
+Ejemplo de código en Kotlin (ilustrativo):
+
+```kotlin
+val numerosPrimos = listOf(
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+    31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+    73, 79, 83, 89, 97
+)
+val diezPrimerosPrimosCuadrados = numerosPrimos.take(10).map { it * it } // Los primeros 10 números primos al cuadrado
+println(diezPrimerosPrimosCuadrados)
+```
+
 
 ##### Lenguajes de Consulta a Bases de Datos
 
@@ -426,7 +466,9 @@ La tipificación (o sistema de tipos) define las reglas sobre cómo el lenguaje 
 
 - **Lenguajes de Propósito General (GPL):** Diseñados para resolver una amplia variedad de problemas en diferentes dominios. La mayoría de los lenguajes populares entran en esta categoría. **Ejemplos**: Python, Java, C++, JavaScript, C#.
 
-- **Lenguajes de Dominio Específico (DSL):** Creados para una tarea muy concreta, ofreciendo una sintaxis y funcionalidades optimizadas para ella. **Ejemplos**: **SQL** (consultas a bases de datos), **HTML/CSS** (estructura y estilo de páginas web), **LaTeX** (composición de documentos científicos), **Gherkin** (para definir tests de comportamiento).
+- **Lenguajes de Dominio Específico (DSL):** Creados para una tarea muy concreta, ofreciendo una sintaxis y funcionalidades optimizadas para ella. **Ejemplos**: **SQL** (consultas a bases de datos), **HTML/CSS** (estructura y estilo de páginas web), **LaTeX** (composición de documentos científicos), **Gherkin** (para definir tests de comportamiento), los *scripts* de **Gradle** (automatización de la compilación y construcción de proyectos).
+
+En la práctica moderna, muchos lenguajes de propósito general incorporan **DSLs internos** (anotaciones, decoradores, lambdas, plantillas, reglas declarativas), lo que difumina la frontera entre GPL y DSL. Frameworks como Spring, React, Django, Unity o Jetpack Compose convierten un 3GL en un entorno donde el desarrollador escribe pequeños "mini‑lenguajes" declarativos para tareas específicas.
 
 ## 4. CÓDIGO Y MÁQUINAS VIRTUALES
 
@@ -443,6 +485,18 @@ Por otro lado, existen lenguajes de programación que no generan código objeto 
 - **Código intermedio**: es un código que se encuentra entre el código fuente y el código ejecutable. No es directamente ejecutable por el sistema operativo, pero puede ser interpretado o compilado en tiempo de ejecución por una máquina virtual. Este enfoque permite una mayor portabilidad entre diferentes plataformas.
 - **Máquinas virtuales**: es un entorno de ejecución que actúa como intermediario entre el sistema operativo y el programa. Ejecuta el código previamente compilado (**bytecode**). Permite programar de manera independiente del sistema; tan sólo es preciso que exista la máquina virtual para este. El ejemplo más característico es el lenguaje **Java**. Cualquier sistema que tenga instalado el **JRE (Java Runtime Environment)** puede ejecutar el código previamente compilado (bytecode).
 
+Ciñéndonos al ejemplo de Java, el proceso desde que escribimos el código hasta que se ejecuta se puede resumir así:
+
+1. Escribimos el **código fuente** en archivos de texto (`.java`).
+2. El compilador (`javac`) lo traduce a **bytecode** (`.class`), un código intermedio que no depende del procesador ni del sistema operativo.
+3. *(Opcional, pero habitual para distribuir la aplicación)*. Empaquetamos el bytecode y los recursos (imágenes, configuración…) en un archivo **`.jar`**, que en realidad es un ZIP.
+4. La **JVM** carga las clases a medida que se necesitan, verifica que el bytecode es seguro y lo ejecuta: lo **interpreta** y, cuando detecta partes del código que se usan mucho, las **compila a código máquina nativo** (compilación JIT) para que la CPU las ejecute directamente.
+
+> [!NOTE]
+> El paso 3 puede recordar al **enlazador** de los lenguajes compilados, porque el resultado es un único fichero listo para distribuir. Pero el mecanismo es distinto: el `.jar` solo **empaqueta**, no resuelve nada, y el sistema operativo no puede ejecutarlo por sí mismo (necesita una JVM). En Java, el verdadero enlazado ocurre **en tiempo de ejecución**, cuando la JVM carga cada clase y resuelve sus referencias a otras clases.
+
+![Comparación del viaje de un «Hola mundo» en C y en Java: C se compila con gcc a un ejecutable nativo; Java se compila con javac a bytecode, se empaqueta en un .jar y lo ejecuta la JVM mediante intérprete y compilador JIT](img/UP01/viaje-hola-mundo.png)
+
 ---
 
 ## PUENTE ENTRE LOS FUNDAMENTOS Y EL PROCESO
@@ -455,6 +509,8 @@ A partir de ahora cambia la pregunta. Saber escribir y ejecutar código no expli
 
 ## 5. DESARROLLAR SOFTWARE ES MÁS QUE PROGRAMAR
 
+Veamos ahora la otra pata del desarrollo de software: la que se ocupa de **comprender el problema y coordinar la solución**. Para ello, conviene distinguir entre **programar** y **desarrollar software**. Partamos, como debería nacer todo proyecto (y el software no es una excepción), de una necesidad concreta.
+
 La responsable de una academia plantea esta necesidad:
 
 > «Quiero que el alumnado pueda reservar tutorías sin tener que llamar por teléfono».
@@ -463,7 +519,13 @@ Podríamos empezar a escribir código inmediatamente, pero todavía no sabemos q
 
 **Programar** consiste en escribir código. **Desarrollar software** incluye comprender la necesidad, decidir una solución, construirla, comprobarla, ponerla a disposición de sus usuarios y mantenerla. Cada vez más, por la irrupción de la inteligencia artificial, el valor se está moviendo de la programación hacia la comprensión del problema y la coordinación del desarrollo.
 
+> [!NOTE]
+> Quiero insistir muy fuertemente en que **programar no es lo mismo que desarrollar software**. Y que cada vez más el valor se está moviendo hacia esto último. La programación es una habilidad técnica, pero el desarrollo de software es un proceso que requiere **comprensión del problema, diseño de la solución y coordinación del equipo**. Esto se desarrolla con mayor profusión en temas venideros, pero precisamente por este *shift* de la industria, creo que es importante introducirlo aquí.
+
 Para nuestro ejemplo acordamos una primera versión pequeña: consultar los huecos publicados, reservar una tutoría y cancelar una reserva propia. Dejamos fuera pagos, videollamadas y notificaciones. Esta decisión define el **alcance**: lo que vamos a abordar en esa versión.
+
+> [!NOTE]
+> En general es una buena idea empezar con un **alcance reducido** y añadir funcionalidades más adelante. La experiencia demuestra que es más fácil ampliar una solución que corregirla o rehacerla. Esta idea está recogida en el **Manifiesto Ágil** («La simplicidad, o el arte de maximizar la cantidad de trabajo no realizado, es esencial»), conecta con el clásico **principio KISS** (*Keep It Simple, Stupid*) y aparece también en marcos como **ITIL** (*Progress iteratively with feedback*).
 
 Una aplicación que se abre sin errores puede seguir siendo una mala solución si permite reservas duplicadas o resulta imposible de utilizar. La **corrección**, la **usabilidad** y la **accesibilidad** deben tenerse en cuenta desde el principio. También interesa que el código pueda entenderse, probarse y modificarse: su **mantenibilidad** influirá en los cambios futuros.
 
@@ -543,6 +605,8 @@ Puede ser razonable cuando los requisitos son estables y conocidos. Por ejemplo,
 
 Esta organización facilita acordar entregables y dependencias. Su dificultad aparece si descubrimos tarde que lo construido no responde a la necesidad: revisar decisiones anteriores puede resultar costoso. Los cambios pueden gestionarse, pero afectan al plan.
 
+![Modelo en cascada: siete fases secuenciales (planificación, requisitos y análisis, diseño, implementación, pruebas, despliegue y mantenimiento), en las que los entregables de cada fase sirven de entrada a la siguiente](img/UP01/modelo-cascada.png)
+
 ### 7.2. Desarrollo iterativo e incremental
 
 **Iterar** significa revisar y mejorar una solución en sucesivas vueltas. Mostramos un boceto de la pantalla de reservas, observamos que no se entiende y cambiamos su organización. Hemos aprendido y refinado la solución.
@@ -559,9 +623,15 @@ Si la academia aún no sabe qué forma de reservar resultará más cómoda, most
 
 **La elección depende del contexto.** Un plazo fijo no obliga por sí solo a usar cascada y desarrollar por incrementos no convierte automáticamente un equipo en ágil. Podemos planificar entregas generales y revisar sus detalles conforme aprendemos.
 
+![Desarrollo iterativo e incremental con la aplicación de reservas: iterar es mejorar la misma pantalla de selección de fecha en sucesivas versiones; incrementar es añadir funcionalidad (consultar huecos, reservar, cancelar); ambos enfoques pueden combinarse](img/UP01/iterativo-incremental.png)
+
 ## 8. LAS HERRAMIENTAS Y SU FINALIDAD
 
-Un **IDE**, o entorno de desarrollo integrado, reúne funciones como edición, navegación por el código, ejecución y depuración. IntelliJ IDEA y CLion son IDE. VS Code parte de un editor ampliable mediante extensiones. Toolbox gestiona instalaciones; es una herramienta distinta de los entornos que instala.
+Un **IDE**, o entorno de desarrollo integrado, reúne funciones como edición, navegación por el código, ejecución y depuración:
+
+- IntelliJ IDEA y CLion son IDE. 
+- VS Code parte de un editor de texto ampliable mediante extensiones. 
+- Toolbox gestiona instalaciones; es una herramienta distinta de los entornos que instala.
 
 Para elegir una herramienta, empezad por la necesidad. Si el programa calcula mal una hora, instalar otro editor probablemente no ayude: necesitamos observar qué valores utiliza y dónde aparece el error.
 
@@ -578,7 +648,7 @@ Para elegir una herramienta, empezad por la necesidad. Si el programa calcula ma
 | Comprobar automáticamente comportamientos del código. | Herramientas de pruebas: JUnit. | UP10–UP11. |
 | Mejorar el código y detectar problemas sin ejecutarlo. | Refactorizaciones e inspecciones del IDE; analizadores estáticos. | UP12–UP13. |
 
-La tabla es un mapa del módulo. No tenéis que instalar ahora todos esos productos ni memorizar sus menús. Sí debéis distinguir sus finalidades.
+La tabla es un mapa del módulo (susceptible de actualización). No tenéis que instalar ahora todos esos productos ni memorizar sus menús. Sí debéis distinguir sus finalidades.
 
 **Pruebas y depuración:** una prueba detecta, por ejemplo, que una reserva termina a una hora incorrecta. El depurador ayuda a investigar la causa deteniendo la ejecución y mostrando valores. Corregimos y volvemos a ejecutar la prueba para comprobar el resultado.
 
@@ -616,6 +686,8 @@ Se planifica el Sprint, se inspecciona el progreso hacia su objetivo y se adapta
 
 **Aplicación al caso:** un objetivo podría ser «permitir consultar los huecos de tutoría». Dibujar la pantalla sin poder consultar los datos todavía no alcanza ese objetivo. No necesitáis simular todos los eventos de Scrum para comprender esta distinción.
 
+![Proceso Scrum: el Product Owner gestiona el Product Backlog; en el Sprint Planning se elabora el Sprint Backlog; durante el Sprint (de 1 a 4 semanas) el equipo hace un Daily Scrum cada 24 horas; el Sprint termina con un incremento terminado, la Sprint Review y la Sprint Retrospective](img/UP01/scrum-proceso.png)
+
 ### 9.3. Kanban
 
 **Kanban** ayuda a gestionar y mejorar el flujo de trabajo: visualizarlo, establecer reglas explícitas, controlar cuánto trabajo se mantiene en curso y observar cómo avanza. Un tablero permite representar los estados por los que pasan las tareas. [Guía Kanban](https://kanbanguides.org/the-kanban-guide/2025.5/).
@@ -628,6 +700,8 @@ Se planifica el Sprint, se inspecciona el progreso hacia su objetivo y se adapta
 Si ya hay dos tareas en curso, antes de empezar una tercera conviene ayudar a terminar o desbloquear las existentes. Poner el límite hace visible la acumulación. Para pasar a «Hecho», acordamos que el comportamiento esté implementado y sus comprobaciones hayan pasado; escribir el código no basta.
 
 Un tablero de columnas, por sí solo, no recoge toda la práctica de Kanban. Hay que atender también a bloqueos y tiempos de paso. Scrum pone el acento en objetivos e inspección dentro de Sprints; Kanban, en gestionar el flujo. Se pueden combinar. Un equipo que recibe incidencias de forma continua puede beneficiarse de controlar el trabajo en curso sin agrupar todas las peticiones en Sprints.
+
+![Tablero Kanban con tres columnas (Pendiente, En curso y Hecho) y tarjetas de colores que representan las tareas en cada estado](img/UP01/kanban-tablero.png)
 
 ## 10. DE UNA NECESIDAD A UN TRABAJO COMPROBABLE
 
@@ -647,7 +721,7 @@ De aquí salen **tareas técnicas**: diseñar la selección de fecha, preparar l
 
 Una **incidencia o bug** describe un problema, como mostrar una plaza ya ocupada. En GitHub, una **issue** es un registro que puede utilizarse para representar una incidencia, una mejora o una tarea. No todas las issues son errores.
 
-Los criterios de aceptación se refieren a una funcionalidad concreta. Una Definición de Terminado puede exigir, para todos los incrementos, que se hayan revisado los cambios y pasado las pruebas acordadas. Son niveles distintos de comprobación.
+Los criterios de aceptación se refieren a una funcionalidad concreta. Una Definición de Terminado (*DoD* --> *Definition of Done*) puede exigir, para todos los incrementos, que se hayan revisado los cambios y pasado las pruebas acordadas. Son niveles distintos de comprobación.
 
 ### 10.2. Un recorrido completo
 
@@ -656,7 +730,7 @@ Veamos cómo se conectan las ideas con la cancelación de reservas:
 | Paso | Decisión o trabajo |
 |---|---|
 | Necesidad | Algunas personas no pueden asistir y quieren liberar su plaza. |
-| Requisito | El titular puede cancelar hasta dos horas antes del inicio. |
+| Requisito | El titular de una reserva puede cancelarla hasta dos horas antes del inicio. |
 | Historia | Como alumno, quiero cancelar mi reserva dentro del plazo permitido, para liberar la plaza. |
 | Planificación | Priorizamos cancelar frente a enviar recordatorios. |
 | Diseño | Añadimos un botón de cancelación y una confirmación para evitar pulsaciones accidentales. |
