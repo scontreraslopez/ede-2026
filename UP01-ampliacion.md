@@ -42,8 +42,6 @@ Al terminar esta unidad deberíais poder:
 - Reconocer las ideas fundamentales del desarrollo ágil y los usos básicos de **Scrum** y **Kanban**.
 - Interpretar una **historia de usuario**, sus **criterios de aceptación**, las tareas necesarias para realizarla y su relación con requisitos, pruebas y definición de terminado.
 
-El bloque dedicado a fases, herramientas y metodologías trabaja principalmente los criterios **b, f y g del RA1**: fases del desarrollo, funcionalidad de las herramientas y características y escenarios de las metodologías ágiles.
-
 ## CÓMO TRABAJAR ESTA UNIDAD
 
 Esta ampliación reúne dos perspectivas que deben entenderse como complementarias.
