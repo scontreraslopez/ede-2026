@@ -131,11 +131,11 @@ La siguiente animación resume el ciclo de vida de un proceso: el programa pasa 
 
 Para entender cómo funcionan e interactúan los distintos tipos de programas en un ordenador, la forma más útil de clasificarlos es según su **función y su proximidad al hardware**. Imagina que un sistema informático es como un edificio:
 
-- El **Hardware** (CPU, RAM, disco duro) son los **cimientos y el terreno**. Es la base física indispensable sobre la que se construye todo.
+- El **Hardware** (CPU, RAM, disco duro) son los **cimientos y el terreno**. Es la base física indispensable sobre la que se construye todo. Un punto importante es que, además de sus especificaciones, no todas las CPU son iguales: cada arquitectura tiene su propio conjunto de instrucciones (ISA, *Instruction Set Architecture*), lo que significa que un programa compilado para una CPU concreta no funcionará en otra diferente (por ejemplo, de una arquitectura x86‑64 a una arquitectura ARM). Esto sucede incluso aunque ambos compartan el mismo sistema operativo (por ejemplo, Ubuntu x86‑64 y Ubuntu ARM), dado que las instrucciones de la CPU son distintas y el sistema operativo no puede traducirlas automáticamente, a pesar de la abstracción que ya de por sí ofrece (como en el acceso a la memoria, periféricos, etc.).
 - El **Software de Sistema** es la **infraestructura del edificio**: la red eléctrica, las tuberías, la estructura... No vives *dentro* de una tubería, pero sin ellas, el edificio es inútil.
 - El **Software de Aplicación** son los **muebles y electrodomésticos**: el sofá, la televisión, el microondas... Son las herramientas que usas directamente para realizar tus tareas diarias.
 
-Con esta analogía en mente, distinguimos dos grandes categorías:
+Con esta analogía en mente, pasamos a desarrollar las dos grandes categorías software:
 
 ---
 
