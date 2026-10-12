@@ -288,6 +288,8 @@ El **nivel de abstracción** mide la distancia entre el lenguaje y el hardware d
 
 - **Lenguaje Máquina**: Es el único idioma que la CPU entiende de forma nativa. Consiste en secuencias de ceros y unos. Hoy en día, ningún programador escribe directamente en código máquina; es el destino final al que los compiladores traducen nuestro código. Ejemplo: la secuencia binaria `1110101100010001` (`0xEB11` en hexadecimal) en la arquitectura x86 (la típica de nuestros PCs) produce un salto a la posición relativa `0x11` --> `JMP 0x11` en lenguaje ensamblador.
 
+![Animación que decodifica una instrucción paso a paso: la sentencia goto fin; de C se traduce a la instrucción JMP 0x11 de ensamblador x86, que en código máquina es 0xEB11 y en binario 1110101100010001](img/UP01/decodificacion_fuente.gif)
+
 **Nivel Intermedio (2GL)**
 
 - **Lenguaje Ensamblador (2GL)**: Es una representación simbólica del código máquina de un procesador concreto. En lugar de ceros y unos utiliza **mnemónicos** como `MOV`, `ADD` o `JMP`, cada uno de los cuales se corresponde prácticamente uno a uno con una instrucción de la CPU. Un programa llamado *ensamblador* se encarga de esa traducción.
