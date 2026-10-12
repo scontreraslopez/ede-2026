@@ -1,7 +1,7 @@
 # UP01 (AMPLIACIÓN): FUNDAMENTOS Y PROCESO DE DESARROLLO DEL SOFTWARE
 
 > [!IMPORTANT]
-> Los apartados **1 a 4** coinciden con el tema de la UP01 que ya habéis trabajado; solo se han añadido algunas imágenes. **Lo nuevo empieza en el apartado 5**. Incluye también un apartado 0 de nivelación y preparación de herramientas, y un índice de objetivos y contenidos.
+> Los apartados **1 a 4** coinciden con el tema de la UP01 que ya habéis trabajado; solo se han añadido algunas imágenes. **Lo nuevo empieza en el apartado 5**. Incluye también un **apartado 0 de nivelación y preparación de herramientas**, y un índice de objetivos y contenidos.
 
 ## ÍNDICE
 
@@ -71,6 +71,9 @@ Un **programa** contiene instrucciones para realizar una tarea. El término **so
 | Proyecto | Conjunto organizado de archivos y configuración de una aplicación. | Código, pruebas y documentación de la aplicación de tutorías. |
 
 **Descargar** un instalador lo guarda en vuestro equipo; **instalar** prepara la aplicación para utilizarla; **abrir** inicia la aplicación. Son operaciones distintas. Tampoco cambiáis el contenido de un archivo por cambiar su extensión: renombrar `entrega.tar.gz` como `entrega.zip` no convierte un archivo comprimido en otro. La extensión es solo una pista para el sistema operativo y las aplicaciones sobre cómo tratar el archivo. 
+
+>[!WARNING]
+> El sistema operativo Windows oculta por defecto las extensiones de archivo conocidas. Para verlas, abrid el explorador de archivos, id a la pestaña **Vista** y marcad la opción **Extensiones de nombre de archivo**.
 
 **Comprobación inicial:** ¿podéis crear una carpeta, guardar dentro un archivo de texto, cerrarlo y volver a encontrarlo? ¿Distinguís la aplicación con la que lo abrís del archivo que contiene vuestro trabajo? Si no, practicad estas operaciones antes de crear proyectos. La preparación siguiente os permite hacerlo.
 
