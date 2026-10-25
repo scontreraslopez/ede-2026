@@ -776,7 +776,7 @@ Existen muchos tipos de configuración: *Application*, *JAR Application* (ejecut
 
 ### 4.6. Atajos imprescindibles
 
-No intentéis memorizar cien atajos. Aprended estos y añadid otros cuando notéis que repetís una acción con el ratón:
+No intentéis memorizar cien atajos. Aprended estos conforme los vayáis necesitando y añadid otros cuando notéis que repetís una acción con el ratón:
 
 | Atajo (Windows / Linux) | Acción |
 |---|---|
@@ -804,7 +804,7 @@ En macOS, la mayoría de los atajos sustituyen *Ctrl* por *⌘* y *Alt* por *⌥
 
 ## 5. PERSONALIZAR Y AUTOMATIZAR INTELLIJ IDEA
 
-Un entorno bien configurado os ahorra tiempo cada día. Este apartado corresponde al criterio con más peso del RA2: **personalizar** (adaptar el entorno a vuestras preferencias) y **automatizar** (hacer que el entorno realice tareas repetitivas por vosotros).
+Un entorno bien configurado os ahorra tiempo cada día.
 
 Todos los ajustes se abren con **Settings** (*Ctrl+Alt+S*). La ventana tiene un buscador arriba a la izquierda: escribid lo que buscáis (`font`, `tabs`, `save`) y se filtrarán las opciones.
 
@@ -880,7 +880,13 @@ max_line_length = 120
 trim_trailing_whitespace = false
 ```
 
-IntelliJ IDEA lo soporta de serie: si existe el archivo, sus reglas tienen prioridad sobre la configuración del IDE. VS Code lo soporta instalando la extensión **EditorConfig for VS Code**.
+El archivo no existe por defecto: hay que crearlo y añadirlo al repositorio, igual que cualquier otro archivo del proyecto. La línea `root = true` indica que es el archivo principal y que no hay que buscar otros en las carpetas superiores. En Markdown se desactiva la eliminación de espacios finales porque dos espacios al final de una línea equivalen a un salto de línea.
+
+IntelliJ IDEA lo soporta de serie: si existe el archivo, sus reglas tienen prioridad sobre la configuración del IDE. Además, podéis crearlo desde el menú contextual (*New → EditorConfig File*), que permite exportar la configuración de estilo actual del IDE. VS Code lo soporta instalando la extensión **EditorConfig for VS Code**, que también añade una opción para generar el archivo desde el explorador.
+
+![Menú contextual New de IntelliJ IDEA con la opción EditorConfig File seleccionada](img/UP02/editorconfig_new_file.png)
+
+Las reglas se aplican a medida que escribís y guardáis; no reformatean automáticamente los archivos existentes. Y no todos los editores soportan todas las propiedades: las básicas (codificación, finales de línea, sangría) funcionan en casi todos, pero otras, como `max_line_length`, dependen de cada editor.
 
 Es un buen ejemplo de **característica común** entre entornos conseguida mediante un estándar.
 
@@ -896,6 +902,8 @@ IntelliJ IDEA guarda los archivos automáticamente: no hace falta pulsar *Ctrl+S
 | **Run code cleanup** | Aplica correcciones automáticas de algunas inspecciones. |
 
 Con *Reformat code* y *Optimize imports* activados, vuestro código estará siempre formateado sin que tengáis que pensar en ello. Es una de las automatizaciones más rentables.
+
+![Settings, Tools, Actions on Save de IntelliJ IDEA con las acciones Reformat code, Optimize imports, Rearrange code y Run code cleanup](img/UP02/actions_on_save.png)
 
 ### 5.5. Plantillas de código
 
@@ -926,9 +934,19 @@ Podéis verlas todas, modificarlas y crear las vuestras en **Settings | Editor |
    // Ejercicio: $END$
    ```
 
+![Settings, Editor, Live Templates con la plantilla cab en el grupo Java y su texto con las variables AUTOR, FECHA y END](img/UP02/live_template_cab.png)
+
 4. Pulsad **Edit Variables** y, en la columna **Expression**, asignad `user()` a `AUTOR` y `date()` a `FECHA`.
+
+![Diálogo Edit Template Variables con la expresión user() asignada a AUTOR y date() a FECHA](img/UP02/live_template_edit_variables.png)
+
 5. Abajo, en **No applicable contexts. Define**, marcad **Java**.
+
+![Aviso No applicable contexts con el enlace Define para elegir en qué contextos se aplica la plantilla](img/UP02/live_template_no_contexts.png)
+
 6. Aplicad, id a un archivo Java, escribid `cab` y pulsad *Tab*.
+
+![Editor de Java sugiriendo la plantilla cab al escribir su abreviatura](img/UP02/live_template_cab_autocomplete.png)
 
 `$END$` marca dónde queda el cursor al terminar. Cualquier otra variable entre `$` se rellena con su expresión o se deja para que la escribáis.
 
@@ -958,7 +976,9 @@ Cuando creáis una clase nueva, IntelliJ IDEA usa una **plantilla de archivo**. 
  */
 ```
 
-A partir de ahora, cada clase que creéis llevará esa cabecera de documentación. La retomaremos al estudiar Javadoc en la UP13.
+![Settings, Editor, File and Code Templates, pestaña Includes, con la plantilla File Header que contiene @author ${USER} y @since ${DATE}](img/UP02/file_header_template.png)
+
+Si lo habéis creado, a partir de ahora, cada clase que creéis llevará esa cabecera de documentación. Lo retomaremos al estudiar Javadoc.
 
 ### 5.6. Macros
 
@@ -985,7 +1005,7 @@ En **Settings | Keymap** podéis:
 Si modificáis un keymap predefinido, IntelliJ IDEA crea una copia con vuestros cambios: siempre podréis volver al original.
 
 > [!TIP]
-> El plugin **Key Promoter X** muestra un aviso cada vez que hacéis con el ratón algo que tiene atajo de teclado, y os dice cuál es. Es la forma más eficaz de aprenderlos (apartado 6.4).
+> El plugin **Key Promoter X** muestra un aviso cada vez que hacéis con el ratón algo que tiene atajo de teclado, y os dice cuál es. Es la forma más eficaz de aprenderlos, volveremos sobre esto cuando hablemos de plugins.
 
 ### 5.8. Exportar y sincronizar la configuración
 
@@ -1071,18 +1091,20 @@ No confundáis ambos: los **requeridos** los define el proyecto a propósito; lo
 | Plugin | Para qué | Cuándo lo usaremos |
 |---|---|---|
 | **Key Promoter X** | Enseña los atajos de teclado de lo que hacéis con el ratón. | Desde ya. |
-| **SonarQube for IDE** (antes SonarLint) | Analiza la calidad del código y señala errores potenciales y malas prácticas mientras escribís. | Desde ya; a fondo en UP12 y UP13. |
-| **PlantUML Integration** | Escribir diagramas UML en texto y verlos dentro del IDE. | UP08 y UP09. |
-| **GitHub Copilot** | Asistente de IA (apartado 10). | Opcional. |
+| **SonarQube for IDE** (antes SonarLint) | Analiza la calidad del código y señala errores potenciales y malas prácticas mientras escribís. | Desde ya; Refactorización |
+| **PlantUML Integration** | Escribir diagramas UML en texto y verlos dentro del IDE. | UML |
+| **GitHub Copilot** | Asistente de IA. | Opcional. |
 
 El soporte de **Markdown**, **Git**, **Maven**, **Gradle**, **JUnit** y **Kotlin** ya viene incluido: no tenéis que instalar nada para ellos.
 
-**Práctica (RA2.b):**
+**Práctica:**
 
 1. Instalad **Key Promoter X** desde Marketplace y usad el IDE unos minutos con el ratón. Observad los avisos.
 2. Instalad **SonarQube for IDE**. Abrid `HolaMundo.java`, declarad una variable que no uséis y observad qué ocurre.
 3. Desactivad **Key Promoter X**, comprobad que dejan de aparecer avisos y volved a activarlo.
 4. Instalad un **tema** cualquiera desde Marketplace, aplicadlo y después **desinstaladlo**. Comprobad que el IDE vuelve al tema anterior.
+
+![Pestaña Marketplace de Settings, Plugins con la búsqueda de Key Promoter X y su botón Install](img/UP02/key_promoter_x_marketplace.png)
 
 ### 6.5. Buenas prácticas
 
@@ -1194,6 +1216,8 @@ Veréis `META-INF/MANIFEST.MF` y `ejemplo/HolaMundo.class`. También podéis cop
 | JDK | 25 |
 | Add sample code | Desmarcado |
 
+![Asistente New Project de IntelliJ IDEA con Kotlin seleccionado, nombre MiPrimerProyectoKotlin, build system IntelliJ, JDK temurin-25 y Add sample code desmarcado](img/UP02/new_project_kotlin.png)
+
 **2.** Clic derecho sobre `src` → **New | Kotlin Class/File** → elegid **File** y llamadlo `Main`. Escribid:
 
 ```kotlin
@@ -1206,22 +1230,30 @@ fun main(args: Array<String>) {
 }
 ```
 
+![Proyecto MiPrimerProyectoKotlin abierto en IntelliJ IDEA con el archivo src/Main.kt y la función main que imprime las tutorías disponibles](img/UP02/kotlin_main_kt.png)
+
 Es el mismo programa. Fijaos en algunas diferencias: no hace falta una clase, `val` declara una variable que no se reasigna, el tipo se deduce automáticamente y `$nombre` inserta el valor de la variable dentro del texto.
 
 **3.** Ejecutadlo con el triángulo verde del margen.
 
+![Archivo Main.kt con el triángulo verde de ejecución del margen señalado en rojo junto a fun main](img/UP02/kotlin_run_gutter.png)
+
 **4.** Compilad (*Ctrl+F9*) y buscad en `out/production/MiPrimerProyectoKotlin/` el resultado: encontraréis **`MainKt.class`**. Kotlin ha generado una clase con el nombre del archivo terminado en `Kt` para alojar la función `main`. **Es bytecode, igual que el de Java**: la misma JVM ejecuta los dos.
+
+![Carpeta out/production/MiPrimerProyectoKotlin con el archivo MainKt.class generado a partir de Main.kt](img/UP02/kotlin_out_mainkt_class.png)
 
 **5.** Generad un JAR como en el apartado anterior. Al elegir la clase principal, seleccionad `MainKt`, y mantened **extract to the target JAR**.
 
 **6.** Ejecutadlo con `java -jar MiPrimerProyectoKotlin.jar`.
 
-**¿Por qué es importante extraer las librerías en el JAR?** Un programa Kotlin necesita la **librería estándar de Kotlin** (`kotlin-stdlib`), que no forma parte de la JVM. Si no se incluye en el JAR, al ejecutarlo obtendréis un error `NoClassDefFoundError: kotlin/...`. Abrid el JAR con `jar --list` y comparad su tamaño y contenido con el de Java: veréis cientos de clases de Kotlin dentro.
+![Archivo MiPrimerProyectoKotlin.jar de unos 1,8 MB y su ejecución en PowerShell con java -jar mostrando el saludo y la lista de tutorías](img/UP02/kotlin_jar_ejecucion.png)
+
+**¿Por qué es importante extraer las librerías en el JAR en el caso de Kotlin?** Un programa Kotlin necesita la **librería estándar de Kotlin** (`kotlin-stdlib`), que no forma parte de la JVM. Si no se incluye en el JAR, al ejecutarlo obtendréis un error `NoClassDefFoundError: kotlin/...`. Abrid el JAR con `jar --list` y comparad su tamaño y contenido con el de Java: veréis cientos de clases de Kotlin dentro.
 
 > [!NOTE]
 > Java y Kotlin pueden convivir en un **mismo proyecto**: una clase Kotlin puede usar clases Java y viceversa. Es habitual en proyectos Android que migran poco a poco de Java a Kotlin.
 
-**Conclusión (RA2.e):** en un mismo entorno, IntelliJ IDEA, hemos generado ejecutables a partir de dos lenguajes distintos. Ambos producen bytecode y un JAR ejecutable con `java -jar`, pero el de Kotlin necesita incluir su librería estándar.
+**Conclusión:** en un mismo entorno, IntelliJ IDEA, hemos generado ejecutables a partir de dos lenguajes distintos. Ambos producen bytecode y un JAR ejecutable con `java -jar`, pero el de Kotlin necesita incluir su librería estándar.
 
 ### 7.5. Ejecutables nativos: C con CLion
 
