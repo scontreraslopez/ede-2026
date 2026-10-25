@@ -371,9 +371,8 @@ Fijaos en el resumen: hay alumnos con muchos minutos y un importe sospechosament
 |---|---|
 | No aparece el triángulo verde junto a `main` o el código sale en rojo | Falta el JDK. Abrid **File \| Project Structure \| Project** y elegid un **SDK** 21 o superior (UP02). |
 | Aparece *Maven build scripts found* | Pulsad **Load**. |
-| El programa no se detiene en el breakpoint | Comprobad que lo lanzáis con **Debug** y no con **Run**, que la condición está bien escrita y que los breakpoints no están silenciados (botón **Mute Breakpoints** de la barra del depurador). |
+| El programa no se detiene en el breakpoint | Comprobad que lo lanzáis con **Debug** y no con **Run**, que la condición está bien escrita y que los breakpoints no están silenciados (botón **Mute Breakpoints** de la barra del depurador). ![Botón Mute Breakpoints de la barra del depurador: círculo rojo tachado](img/UP03/boton_mute_breakpoints.png) |
 | El breakpoint de excepción se detiene en una clase que no es nuestra | Pulsad `F9` hasta que se detenga en `Tarifa`. |
 | Al escribir el NIA, el código sale en rojo | Escribid solo los dígitos, sin letras ni espacios. Si empieza por cero, quitad el cero inicial. Si tiene más de 9 cifras, añadid una `L` al final (`12345678901L`). |
 | Las respuestas no coinciden con las de un compañero | Es lo esperado: cada NIA genera datos distintos. |
 
-![Botón Mute Breakpoints de la barra del depurador: círculo rojo tachado](img/UP03/boton_mute_breakpoints.png)
