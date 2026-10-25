@@ -10,7 +10,7 @@ El módulo recorre el desarrollo del software de extremo a extremo: lenguajes y 
 |---|---|---|
 | [UP01](UP01.md) | Desarrollo del software | [UP01 (ampliación)](UP01-ampliacion.md) |
 | [UP02](UP02.md) | Entornos de desarrollo. Instalación y configuración | |
-| UP03 | Depuración de código | |
+| [UP03](UP03.md) | Depuración de código | [UP03 (ampliación)](UP03-ampliacion.md) |
 | UP04 | Sistema de control de versiones | |
 | UP05 | GitHub. Desarrollo colaborativo e integración con el IDE | |
 | UP06 | Fases en el desarrollo y ejecución del software | |

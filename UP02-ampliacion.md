@@ -99,24 +99,12 @@ La unidad sigue un hilo conductor sencillo. Escribiremos un pequeño programa qu
 
 Entre medias aprenderéis a adaptar el entorno a vuestra forma de trabajar y a automatizar tareas repetitivas. Ese es el criterio con más peso del RA2, así que no lo dejéis para el final.
 
-No hace falta leerlo todo de una sentada. Una forma razonable de organizarse es:
-
-| Sesión | Apartados | Qué deberíais tener al terminar |
-|---|---|---|
-| 1 | 0, 1 y 2 | Un criterio propio para comparar entornos. |
-| 2 | 3 | Un JDK instalado y el programa ejecutado desde la terminal. |
-| 3 | 4 | El proyecto creado y ejecutándose en IntelliJ IDEA. |
-| 4 | 5 y 6 | Un IntelliJ IDEA configurado a vuestro gusto, con plugins del curso. |
-| 5 | 7 | Un JAR de Java, un JAR de Kotlin y un ejecutable de C. |
-| 6 | 8 y 9 | El mismo programa empaquetado desde VS Code y una comparativa. |
-| 7 | 10, 11 y 12 | Repaso y autocomprobación. |
-
 > [!NOTE]
 > IntelliJ IDEA no tiene traducción oficial al castellano, así que los nombres de menús y opciones aparecen **en inglés**, tal y como los veréis en pantalla. La ruta de un menú se escribe con barras verticales: **Settings | Editor | Font** significa «abrid Settings, después Editor y después Font».
 
 ## 0. ANTES DE EMPEZAR
 
-En el apartado 0.2 de la UP01 instalasteis **JetBrains Toolbox App**, **IntelliJ IDEA**, **CLion** y **Visual Studio Code**. Comprobad antes de seguir:
+En la UP01 instalasteis **JetBrains Toolbox App**, **IntelliJ IDEA**, **CLion** y **Visual Studio Code**. Comprobad antes de seguir:
 
 - [ ] Abrís Toolbox y veis IntelliJ IDEA y CLion en la lista de herramientas instaladas.
 - [ ] IntelliJ IDEA llega a su pantalla de bienvenida (*Welcome to IntelliJ IDEA*).
@@ -169,9 +157,9 @@ Un **entorno de desarrollo integrado** (IDE, *Integrated Development Environment
 | **Gestión de proyectos** | Organizar archivos, carpetas, librerías y configuración del proyecto. | Ventana *Project*, *Project Structure*. |
 | **Compilación y construcción** | Traducir el código y preparar el resultado para ejecutarlo o distribuirlo. | *Build Project*, *Build Artifacts*, integración con Maven y Gradle. |
 | **Ejecución** | Lanzar el programa con la configuración adecuada y mostrar su salida. | Botón *Run* y ventana *Run*. |
-| **Depurador** | Detener el programa en un punto, avanzar paso a paso e inspeccionar variables. | Botón *Debug* (lo trabajaremos en la UP03). |
-| **Refactorización** | Cambiar la estructura del código sin cambiar su comportamiento: renombrar, extraer métodos... | Menú *Refactor* (UP12). |
-| **Control de versiones** | Registrar y consultar cambios, trabajar con ramas, sincronizar con GitHub. | Ventanas *Commit* y *Git* (UP04 y UP05). |
+| **Depurador** | Detener el programa en un punto, avanzar paso a paso e inspeccionar variables. | Botón *Debug* |
+| **Refactorización** | Cambiar la estructura del código sin cambiar su comportamiento: renombrar, extraer métodos... | Menú *Refactor* |
+| **Control de versiones** | Registrar y consultar cambios, trabajar con ramas, sincronizar con GitHub. | Ventanas *Commit* y *Git* |
 | **Pruebas** | Escribir, ejecutar y ver el resultado de pruebas automáticas. | Integración con JUnit (UP11). |
 | **Terminal integrada** | Ejecutar comandos sin salir del entorno. | Ventana *Terminal*. |
 | **Sistema de plugins** | Añadir funcionalidades que el IDE no trae de serie. | **Settings \| Plugins**. |
@@ -212,8 +200,12 @@ Los editores ampliables consiguen algo parecido mediante el **Language Server Pr
 
 Gracias a LSP, el mismo servidor de lenguaje sirve para VS Code, Neovim, Zed y muchos otros editores. Es una **característica común** que explica por qué hoy casi cualquier editor ofrece autocompletado inteligente.
 
+![Comparación sin LSP y con LSP: sin LSP, cada editor (VS Code, Neovim, Zed) necesita su propia integración con cada lenguaje (Java, Python, Rust), 3 × 3 = 9 integraciones; con LSP, los editores y los servidores de lenguaje se comunican a través de un protocolo común, 3 + 3 = 6](img/UP02/lsp_sin_con.png)
+
 > [!NOTE]
 > Un detalle curioso: el servidor de lenguaje de Java que usa VS Code está construido sobre el compilador y el analizador de **Eclipse**. Cuando programáis Java en VS Code, por debajo trabaja parte de otro IDE.
+
+Aunque el LSP ha acercado los editores ampliables a los IDE, los IDE frontera siguen teniendo importantes ventajas. Por ejemplo, JetBrains no usa LSP para su soporte de Java: su análisis (PSI. *Program Structure Interface*) vive dentro del propio proceso del IDE, con acceso directo y en memoria al modelo, sin serializar JSON. Eso permite refactorizaciones y análisis mucho más ricos de lo que LSP sabe expresar.
 
 ### 1.5. IDE, SDK, framework, herramienta de construcción y plugin
 
@@ -228,9 +220,15 @@ Son conceptos que aparecen juntos constantemente y que conviene no confundir:
 | **Herramienta de construcción** | Automatiza compilar, descargar dependencias, ejecutar pruebas y empaquetar. | Maven, Gradle. |
 | **Plugin o extensión** | Módulo que añade funcionalidad al IDE. | El plugin de Kotlin, la extensión de Java para VS Code. |
 
-Una forma de recordarlo: **el IDE es el taller, el SDK son las herramientas básicas, el framework es el plano de la casa, la herramienta de construcción es la cadena de montaje y los plugins son accesorios para el taller.**
+Una forma de recordarlo, según la analogía:
 
-Veamos un ejemplo con todos juntos. Para crear una aplicación web en Java podríais usar **IntelliJ IDEA** (IDE) con el **JDK 25** (SDK), construir la aplicación sobre **Spring Boot** (framework), gestionar las dependencias con **Maven** (herramienta de construcción) e instalar el plugin **SonarQube for IDE** para revisar la calidad del código. Podríais cambiar el IDE por VS Code sin tocar nada más: el proyecto seguiría siendo el mismo.
+- El **IDE** es el taller.
+- El **SDK** son las herramientas básicas.
+- El **framework** es el plano de la casa.
+- La **herramienta de construcción** (*build tool*) es la cadena de montaje.
+- Los **plugins** son accesorios para el taller.
+
+Veamos un ejemplo con todos juntos. Para crear una aplicación web en Java podríais usar **IntelliJ IDEA** (IDE) con el **JDK 25** (SDK), construir la aplicación sobre **Spring Boot** (framework), gestionar las dependencias con **Maven** (herramienta de construcción) e instalar el plugin **SonarQube for IDE** para revisar la calidad del código. Podríais cambiar el IDE por VS Code sin tocar nada más: el proyecto seguiría siendo el mismo. Cabe señalar que, no todos los proyectos 
 
 Una diferencia clave entre librería y framework es **quién llama a quién**. Vuestro código llama a una librería cuando la necesita. En cambio, un framework llama a vuestro código cuando le conviene: vosotros rellenáis los huecos que deja. A esto se le llama **inversión de control**.
 
@@ -265,7 +263,7 @@ Estos cuatro términos se usan a menudo como si fueran sinónimos, pero no lo so
 
 **Gratuito no significa libre.** Xcode es gratuito, pero propietario. Y algo libre puede venderse.
 
-En el mundo de los entornos de desarrollo es frecuente un **modelo mixto**: un núcleo de código abierto sobre el que la empresa distribuye un producto con componentes o funciones propietarios.
+En el mundo de los entornos de desarrollo es frecuente un **modelo mixto**, conocido como ***open core***: un núcleo de código abierto sobre el que la empresa distribuye un producto con componentes o funciones propietarios. Es el caso de **VS Code**: su código fuente es libre (licencia MIT), pero la versión que se descarga desde Microsoft se distribuye con licencia propietaria e incluye añadidos como la telemetría o el acceso a su Marketplace de extensiones. El mismo modelo se da fuera de los IDE, por ejemplo en **Odoo**, un ERP cuya edición Community es libre, mientras que la edición Enterprise, de pago, añade módulos propietarios.
 
 | Entorno | Modelo de licencia |
 |---|---|
@@ -279,9 +277,6 @@ En el mundo de los entornos de desarrollo es frecuente un **modelo mixto**: un n
 | **PhpStorm** | Propietario y de pago, con licencia educativa gratuita. |
 | **Visual Studio** | Propietario. La edición *Community* es gratuita para estudiantes, proyectos de código abierto y equipos pequeños. |
 | **Xcode** | Propietario y gratuito. Solo para macOS. |
-
-> [!IMPORTANT]
-> El caso de VS Code es buena pregunta de examen: **es gratuito y está construido sobre código abierto, pero el producto de Microsoft no es software libre.** Si queréis la versión libre, existe **VSCodium**. A cambio, VSCodium no puede usar el marketplace oficial de extensiones de Microsoft y usa **Open VSX**, un registro abierto en el que no están todas las extensiones.
 
 > [!WARNING]
 > Las condiciones de licencia de los IDE comerciales cambian con cierta frecuencia. La tabla refleja la situación a finales de 2026; ante la duda, consultad la web oficial de cada producto.
@@ -302,8 +297,6 @@ Funcionalidades destacadas:
 
 Su código abierto ha permitido que aparezcan **derivados** (*forks*): VSCodium, y también varios editores centrados en IA, como Cursor, que parten de VS Code y comparten su interfaz y sus extensiones.
 
-Lo usaremos como segundo entorno en el apartado 8.
-
 #### Familia JetBrains
 
 JetBrains es una empresa que desarrolla una familia de IDE especializados, todos construidos sobre la misma plataforma (*IntelliJ Platform*). Comparten interfaz, atajos y forma de trabajar: si sabéis usar uno, sabéis usarlos todos.
@@ -318,9 +311,12 @@ JetBrains es una empresa que desarrolla una familia de IDE especializados, todos
 | **Rider** | .NET y C#, y desarrollo de videojuegos con Unity o Unreal. |
 | **GoLand, RustRover, DataGrip...** | Go, Rust, bases de datos... |
 
-**JetBrains Toolbox App** gestiona la instalación y actualización de todos ellos desde un único lugar. Lo instalasteis en la UP01.
+**JetBrains Toolbox App** gestiona la instalación y actualización de todos ellos desde un único lugar.
 
-Los estudiantes pueden solicitar una **licencia educativa gratuita** que desbloquea todas las funciones de pago de todos los IDE de JetBrains mientras dure la matrícula (lo veremos en el apartado 4.1).
+Los estudiantes pueden solicitar una **licencia educativa gratuita** que desbloquea todas las funciones de pago de todos los IDE de JetBrains mientras dure la matrícula.
+
+> [!NOTE]
+> Una ventaja de aprender con un IDE de JetBrains es que todos los de la familia comparten interfaz, atajos y filosofía, así que dominar uno os facilita usar cualquiera de los demás. Esto incluye a **Android Studio**, que Google ha construido sobre la plataforma de IntelliJ IDEA: lo que aprendáis ahora os servirá directamente para el desarrollo de aplicaciones móviles Android. Y lo mismo ocurre en el mundo profesional: si en una empresa usan PyCharm y en otra WebStorm, no hay que volver a aprender a manejar el IDE.
 
 #### Eclipse IDE
 
@@ -371,12 +367,12 @@ En desarrollo web hay una herramienta que forma parte del entorno aunque no est�
 
 El entorno de desarrollo no tiene por qué estar instalado en vuestro ordenador:
 
-- **github.dev**: pulsad la tecla `.` (punto) en cualquier repositorio de GitHub y se abrirá un VS Code en el navegador para editar sus archivos. No permite ejecutar código, pero es útil para cambios rápidos. Probadlo con el repositorio de los apuntes del módulo.
-- **GitHub Codespaces**: crea una máquina virtual en la nube con el repositorio, las herramientas y un VS Code conectado, ya sea en el navegador o desde vuestro VS Code local. Sí permite ejecutar y depurar. Las cuentas personales tienen una cuota mensual gratuita.
-- **Contenedores de desarrollo** (*Dev Containers*): un archivo `devcontainer.json` en el repositorio describe el entorno (versión del JDK, extensiones, herramientas). Cualquiera que abra el proyecto obtiene exactamente el mismo entorno.
-- **Desarrollo remoto de JetBrains**: el IDE se ejecuta en un servidor y vosotros trabajáis con un cliente ligero.
+- **github.dev**: pulsad la tecla `.` (punto) en cualquier repositorio de GitHub y se abrirá un VS Code en el navegador para editar sus archivos. No permite ejecutar código, pero es útil para cambios rápidos. Si al pulsar el punto no se abre, cambiad `github.com` por `github.dev` en la URL del repositorio.
+- **Contenedores de desarrollo** (*Dev Containers*): un archivo `devcontainer.json` en el repositorio describe el entorno (versión del JDK, extensiones, herramientas) y el editor lo reproduce dentro de un contenedor Docker. Así, cualquiera que abra el proyecto trabaja con el mismo entorno.
+- **GitHub Codespaces**: lleva la idea anterior a la nube. Crea un entorno a partir del `devcontainer.json` del repositorio y os conecta a él con VS Code, ya sea en el navegador o desde vuestro VS Code local. A diferencia de github.dev, sí permite ejecutar y depurar. Las cuentas personales tienen una cuota mensual gratuita, que es mayor si tenéis una cuenta de estudiante de GitHub Education.
+- **Desarrollo remoto por SSH**: el código y las herramientas están en otra máquina (un servidor, una máquina virtual) y el editor se conecta a ella. En VS Code se hace con la extensión *Remote - SSH*; en los IDE de JetBrains, con **JetBrains Gateway**, que ejecuta el IDE en el servidor y os deja un cliente ligero en local.
 
-Estas opciones resuelven un problema clásico de los equipos: «en mi ordenador funciona». Si el entorno se describe en un archivo y se reproduce automáticamente, todos trabajan con lo mismo.
+Los contenedores de desarrollo y Codespaces resuelven además un problema clásico de los equipos: «en mi ordenador funciona». Si el entorno se describe en un archivo y se reproduce automáticamente, todos trabajan con lo mismo.
 
 ### 2.7. Características comunes y específicas
 
@@ -444,11 +440,14 @@ Herramientas del JDK que usaremos:
 | `javap` | Muestra el contenido de un `.class`, incluido el bytecode. |
 
 > [!NOTE]
-> Desde Java 11, Oracle ya no distribuye un JRE independiente: se instala el JDK completo o, para distribuir una aplicación, se genera un entorno de ejecución a medida con `jlink` o `jpackage`. Por eso, aunque el concepto de JRE sigue siendo útil, en la práctica siempre instalaréis un JDK.
+> Desde Java 11, Oracle ya no distribuye un JRE independiente: se instala el JDK completo o, para distribuir una aplicación, se genera un entorno de ejecución a medida con `jlink` o `jpackage`. Otros distribuidores, como Eclipse Temurin, sí siguen ofreciendo paquetes JRE, que se usan sobre todo en servidores y contenedores para ejecutar aplicaciones sin incluir las herramientas de desarrollo. El concepto de JRE, por tanto, sigue siendo útil, pero vosotros, para desarrollar, instalaréis siempre un JDK. Los más veteranos tenemos la costumbre de hablar de «instalar el JRE», pero es una herencia de otra época.
 
 ### 3.2. Versiones y distribuciones
 
 Java publica una versión nueva **cada seis meses** (marzo y septiembre). Algunas son **LTS** (*Long-Term Support*): reciben actualizaciones de seguridad durante años, y son las que usan las empresas. Las versiones LTS recientes son **Java 17** (2021), **Java 21** (2023) y **Java 25** (2025).
+
+> [!NOTE]
+> En general, salvo que un proyecto exija otra cosa, usad la versión **LTS** más reciente del JDK. Podéis descargarla de Adoptium (Eclipse Temurin) o directamente desde IntelliJ IDEA, que permite descargar e instalar JDK desde el propio IDE. Si un proyecto necesita otra versión, instaladla también y seleccionadla solo para ese proyecto, idealmente declarándola en su configuración de Maven o Gradle para que cualquiera que lo abra use la misma. Es lo que ocurrirá, por ejemplo, en los proyectos de Android, que funcionan con la versión que requiere su sistema de construcción.
 
 En este curso usaremos **Java 25 LTS**. Si un proyecto o una librería requiere otra versión, podéis tener varios JDK instalados a la vez sin problema.
 
@@ -487,6 +486,8 @@ Instalar el JDK en el sistema permite usarlo desde la terminal y desde cualquier
 - **Add to PATH** (normalmente activado por defecto).
 - **Set JAVA_HOME variable** (normalmente **desactivado** por defecto: activadlo).
 
+![Instalador de Eclipse Temurin en Windows, pantalla de instalación personalizada con las opciones «Añadir al PATH» y «Establecer la variable JAVA_HOME» activadas](img/UP02/temurin_instalacion_personalizada.png)
+
 También podéis instalarlo desde la terminal con el gestor de paquetes de Windows:
 
 ```powershell
@@ -502,9 +503,19 @@ winget install EclipseAdoptium.Temurin.25.JDK
 - **PATH** es una variable de entorno con la lista de carpetas en las que el sistema busca los programas cuando escribís un comando. Si la carpeta `bin` del JDK no está en el PATH, al escribir `javac` el sistema responderá que no reconoce el comando.
 - **JAVA_HOME** es una variable de entorno que apunta a la carpeta del JDK. No la usa el sistema, sino otras herramientas (Maven, Gradle, algunos IDE) para saber qué JDK utilizar.
 
+![PowerShell responde que el término «java» no se reconoce como cmdlet, función o programa ejecutable porque la carpeta bin del JDK no está en el PATH](img/UP02/java_no_reconocido_powershell.png)
+
+> [!TIP]
+> En Windows, puedes abrir terminal (PowerShell) y escribir `echo $Env:PATH` para ver el PATH y `echo $Env:JAVA_HOME` para ver JAVA_HOME.
+
+![PowerShell mostrando con echo $ENV:JAVA_HOME que la variable apunta a la carpeta de instalación del JDK de Eclipse Adoptium](img/UP02/java_home_powershell.png)
+
+> [!NOTE]
+> En la captura aparece un JDK 21 porque es el que tenía instalado en ese equipo. Con Temurin 25, la ruta será similar pero terminará en `jdk-25...-hotspot`.
+
 #### Comprobar la instalación
 
-Cerrad y volved a abrir la terminal (las variables de entorno se leen al abrirla) y escribid:
+Cerrad y volved a abrir la terminal (las variables de entorno se recargan al abrirla) y escribid:
 
 ```text
 java -version
@@ -525,7 +536,7 @@ Los números concretos pueden variar. Lo importante es que ambos comandos respon
 
 ### 3.4. Compilar y ejecutar desde la terminal
 
-Antes de usar el IDE, vamos a hacer todo el proceso a mano. Así sabréis qué está automatizando el IDE.
+Antes de usar el IDE, vamos a hacer todo el proceso a mano. Así sabréis qué está automatizando el IDE. Si habeís hecho esta actividad de ampliación, ya os sonará familiar.
 
 **1.** Dentro de vuestra carpeta `EDE`, cread esta estructura de carpetas con el explorador o con `mkdir`:
 
@@ -601,6 +612,8 @@ Veréis instrucciones como `getstatic`, `ldc` o `invokevirtual`: es el código i
 
 **Resultado esperado:** tenéis `HolaMundo.jar` funcionando sin haber abierto un IDE. Guardad este JAR, porque en el apartado 9 lo compararemos con los que generen IntelliJ IDEA y VS Code.
 
+Aquí tenéis un resumen en vídeo del proceso: [https://youtu.be/BYyw7sHTSHM](https://youtu.be/BYyw7sHTSHM). Acordaros de ajustar la calidad del vídeo, por defecto puede que te lo coja a 240p y no se vea bien el texto.
+
 ## 4. INTELLIJ IDEA
 
 ### 4.1. Licencia y ediciones
@@ -618,7 +631,7 @@ Encontraréis muchos tutoriales y apuntes antiguos que hablan de «Community» y
 Como estudiantes, podéis solicitar gratis la **licencia educativa de JetBrains**, que desbloquea las funciones de pago de **todos** sus IDE mientras estéis estudiando:
 
 1. Entrad en [jetbrains.com/community/education](https://www.jetbrains.com/community/education/#students) y elegid la opción para estudiantes.
-2. Verificad vuestra condición de estudiante con el correo institucional `@alu.edu.gva.es` o, si ya lo tenéis, con el **GitHub Student Developer Pack** (UP05).
+2. Verificad vuestra condición de estudiante con el correo institucional `@alu.edu.gva.es` o, si ya lo tenéis, con el **GitHub Student Developer Pack**.
 3. Se creará una cuenta de JetBrains. Al abrir IntelliJ IDEA, iniciad sesión con ella en **Help | Register...** (o desde el aviso de licencia de la pantalla de bienvenida).
 
 La licencia se renueva anualmente mientras sigáis siendo estudiantes. Si la verificación da problemas, no os preocupéis: para este módulo bastan las funciones gratuitas.
@@ -627,7 +640,7 @@ La licencia se renueva anualmente mientras sigáis siendo estudiantes. Si la ver
 
 #### Instalación
 
-Ya lo instalasteis con **Toolbox App** en la UP01. Toolbox es la forma recomendada porque gestiona en un único lugar la instalación, las actualizaciones y las versiones de todos los IDE de JetBrains. También es posible descargar el instalador directamente desde [jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/) o, en Linux, usar paquetes Snap o Flatpak.
+Ya lo instalasteis con **Toolbox App**. Toolbox es la forma recomendada porque gestiona en un único lugar la instalación, las actualizaciones y las versiones de todos los IDE de JetBrains. También es posible descargar el instalador directamente desde [jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/) o, en Linux, usar paquetes Snap o Flatpak.
 
 **Requisitos orientativos:** 8 GB de RAM como mínimo (16 GB recomendados), unos 3,5 GB de disco y un sistema operativo de 64 bits actualizado. Con 8 GB funciona, pero conviene cerrar el navegador y otras aplicaciones pesadas.
 
@@ -644,7 +657,7 @@ En Toolbox, pulsad los tres puntos (**⋮**) junto a IntelliJ IDEA y elegid **Se
 
 En la configuración general de Toolbox (icono del engranaje del propio Toolbox) podéis decidir si Toolbox se actualiza solo, si se inicia con el sistema y si se conservan versiones anteriores para poder volver a ellas.
 
-**Recomendación para el curso:** canal **Release**, actualización automática **desactivada** durante las semanas de prácticas y exámenes. Una actualización justo antes de una entrega puede cambiar menús o romper un plugin. Actualizad cuando tengáis tiempo para comprobar que todo funciona.
+**Recomendación para el curso:** canal **Release**, actualización automática **desactivada**. Una actualización, puede cambiar menús o romper un plugin. Actualizad cuando tengáis tiempo para comprobar que todo funciona.
 
 #### Configurar las actualizaciones desde el IDE
 
@@ -660,14 +673,14 @@ Si el IDE está gestionado por Toolbox, las actualizaciones del propio IDE se ge
 
 Desde 2024, IntelliJ IDEA usa por defecto la **nueva interfaz** (*New UI*), más limpia que la clásica. Si veis capturas antiguas con muchos iconos y barras, corresponden a la interfaz clásica.
 
-<!-- TODO: captura de la interfaz actual de IntelliJ IDEA (nueva UI) con las zonas numeradas -->
+![Zonas de la nueva interfaz de IntelliJ IDEA: (1) barra de herramientas superior, (2) barras laterales de ventanas de herramientas con la ventana Project, (3) editor con el gutter y (4) barra de estado](img/UP02/new_ui_zonas.png)
 
 | Zona | Dónde está | Qué contiene |
 |---|---|---|
-| **Barra superior** (*main toolbar*) | Arriba | Menú principal (icono ☰ en Windows y Linux), selector de proyecto, rama de Git, **widget de ejecución** (configuración, botones *Run* y *Debug*), búsqueda y ajustes. |
-| **Barras laterales de ventanas** | Bordes izquierdo y derecho | Iconos que abren las **ventanas de herramientas** (*tool windows*): *Project*, *Commit*, *Structure*, *Terminal*, *Run*, *Problems*, *Maven*, *Gradle*... |
-| **Editor** | Centro | Los archivos abiertos, en pestañas. El margen izquierdo (*gutter*) muestra números de línea, iconos de ejecución y puntos de ruptura. |
-| **Barra de estado** | Abajo | Ruta del archivo, posición del cursor, codificación (UTF-8), tipo de salto de línea, indentación y tareas en segundo plano (como *Indexing...*). |
+| **1. Barra superior** (*main toolbar*) | Arriba | Menú principal (icono ☰ en Windows y Linux), selector de proyecto, rama de Git, **widget de ejecución** (configuración, botones *Run* y *Debug*), búsqueda y ajustes. |
+| **2. Barras laterales de ventanas** | Bordes izquierdo y derecho | Iconos que abren las **ventanas de herramientas** (*tool windows*): *Project*, *Commit*, *Structure*, *Terminal*, *Run*, *Problems*, *Maven*, *Gradle*... |
+| **3. Editor** | Centro | Los archivos abiertos, en pestañas. El margen izquierdo (*gutter*) muestra números de línea, iconos de ejecución y puntos de ruptura. |
+| **4. Barra de estado** | Abajo | Ruta del archivo, posición del cursor, codificación (UTF-8), tipo de salto de línea, indentación y tareas en segundo plano (como *Indexing...*). |
 
 Las ventanas de herramientas se abren y cierran con un clic en su icono o con *Alt+número*: *Alt+1* para *Project*, *Alt+4* para *Run*, *Alt+F12* para *Terminal*. Podéis arrastrar sus iconos para recolocarlas.
 
@@ -688,9 +701,9 @@ Vamos a crear en IntelliJ IDEA el mismo programa que compilasteis desde la termi
 |---|---|---|
 | **Name** | `MiPrimerProyectoJava` | Nombre del proyecto y de su carpeta. |
 | **Location** | Vuestra carpeta `EDE` | Dónde se creará la carpeta del proyecto. |
-| **Create Git repository** | Desmarcado | Lo trabajaremos en la UP04. |
+| **Create Git repository** | Desmarcado | Lo trabajaremos más adelante. |
 | **Language** | Java | IntelliJ IDEA también ofrece Kotlin, Groovy y otros con plugins. |
-| **Build system** | IntelliJ | El sistema de construcción propio del IDE. Maven y Gradle los presentaremos en el apartado 7.7. |
+| **Build system** | IntelliJ | El sistema de construcción propio del IDE. Maven y Gradle los presentaremos más adelante. |
 | **JDK** | 25 | Si no aparece, **Download JDK...** (apartado 3.3). |
 | **Add sample code** | Desmarcado | Escribiremos el código nosotros. |
 
