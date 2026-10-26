@@ -99,8 +99,8 @@ Son los atajos del mapa de teclado por defecto de Windows y Linux. En macOS camb
 
    Elegid como **Directory** una carpeta dentro de vuestra carpeta `EDE` (o la que estéis usando para este módulo) y pulsad **Clone**.
 
-   > [!TIP]
-   > Si IntelliJ avisa de que no encuentra Git, pulsad **Download and Install** en el mismo aviso. Si ya tenéis Git instalado y preferís la terminal, el comando equivalente es `git clone https://github.com/scontreraslopez/ede-up03-tutorias-debug.git`. Git lo veremos a fondo en la siguiente unidad.
+> [!TIP]
+> Si IntelliJ avisa de que no encuentra Git, pulsad **Download and Install** en el mismo aviso. Si ya tenéis Git instalado y preferís la terminal, el comando equivalente es `git clone https://github.com/scontreraslopez/ede-up03-tutorias-debug.git`. Git lo veremos a fondo en la siguiente unidad.
 
 3. Abrid el proyecto. Si aparece el aviso *Maven build scripts found*, pulsad **Load**. Esperad a que termine de indexar (barra inferior).
 4. Abrid `src/main/java/es/severoochoa/ede/tutorias/Main.java`. Ejecutadlo con el triángulo verde que aparece junto a `public static void main`. El programa os pedirá el NIA.
