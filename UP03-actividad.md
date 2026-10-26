@@ -145,8 +145,8 @@ Son los atajos del mapa de teclado por defecto de Windows y Linux. En macOS camb
 4. En **Variables**, desplegad `r` con la flecha. Anotad el id, el alumno, la asignatura y los minutos de la primera reserva.
 5. Pulsad `F7` (**Step Into**) para entrar en `Facturador.importe`. Pulsad `F7` otra vez para entrar en `Tarifa.precioPorHora`.
 
-   > [!TIP]
-   > Si una línea llama a varios métodos, IntelliJ puede resaltarlos para que elijáis: haced clic en `precioPorHora`. Si acabáis dentro de `getAsignatura()`, salid con `Shift+F8` y volved a pulsar `F7`.
+> [!TIP]
+> Si una línea llama a varios métodos, IntelliJ puede resaltarlos para que elijáis: haced clic en `precioPorHora`. Si acabáis dentro de `getAsignatura()`, salid con `Shift+F8` y volved a pulsar `F7`.
 
 ![Ejecución parada en la primera línea de Facturador.importe con la llamada a precioPorHora resaltada para elegirla con Step Into; la reserva es la 1000 de Pablo con Javier, Digitalización, 30 min](img/UP03/step_into_precio_por_hora.png)
 
