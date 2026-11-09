@@ -99,8 +99,8 @@ Son los atajos del mapa de teclado por defecto de Windows y Linux. En macOS camb
 
    Elegid como **Directory** una carpeta dentro de vuestra carpeta `EDE` (o la que estéis usando para este módulo) y pulsad **Clone**.
 
-   > [!TIP]
-   > Si IntelliJ avisa de que no encuentra Git, pulsad **Download and Install** en el mismo aviso. Si ya tenéis Git instalado y preferís la terminal, el comando equivalente es `git clone https://github.com/scontreraslopez/ede-up03-tutorias-debug.git`. Git lo veremos a fondo en la siguiente unidad.
+> [!TIP]
+> Si IntelliJ avisa de que no encuentra Git, pulsad **Download and Install** en el mismo aviso. Si ya tenéis Git instalado y preferís la terminal, el comando equivalente es `git clone https://github.com/scontreraslopez/ede-up03-tutorias-debug.git`. Git lo veremos a fondo en la siguiente unidad.
 
 3. Abrid el proyecto. Si aparece el aviso *Maven build scripts found*, pulsad **Load**. Esperad a que termine de indexar (barra inferior).
 4. Abrid `src/main/java/es/severoochoa/ede/tutorias/Main.java`. Ejecutadlo con el triángulo verde que aparece junto a `public static void main`. El programa os pedirá el NIA.
@@ -145,8 +145,8 @@ Son los atajos del mapa de teclado por defecto de Windows y Linux. En macOS camb
 4. En **Variables**, desplegad `r` con la flecha. Anotad el id, el alumno, la asignatura y los minutos de la primera reserva.
 5. Pulsad `F7` (**Step Into**) para entrar en `Facturador.importe`. Pulsad `F7` otra vez para entrar en `Tarifa.precioPorHora`.
 
-   > [!TIP]
-   > Si una línea llama a varios métodos, IntelliJ puede resaltarlos para que elijáis: haced clic en `precioPorHora`. Si acabáis dentro de `getAsignatura()`, salid con `Shift+F8` y volved a pulsar `F7`.
+> [!TIP]
+> Si una línea llama a varios métodos, IntelliJ puede resaltarlos para que elijáis: haced clic en `precioPorHora`. Si acabáis dentro de `getAsignatura()`, salid con `Shift+F8` y volved a pulsar `F7`.
 
 ![Ejecución parada en la primera línea de Facturador.importe con la llamada a precioPorHora resaltada para elegirla con Step Into; la reserva es la 1000 de Pablo con Javier, Digitalización, 30 min](img/UP03/step_into_precio_por_hora.png)
 
