@@ -1,6 +1,9 @@
 <!-- markdownlint-disable MD029 MD033 MD036-->
 # Práctica Formativa EDE 01: Iniciación al Control de Versiones (Git y VSCode)
 
+> [!WARNING]
+> Tras darle muchas vueltas, esta práctica se queda como actividad no calificable de momento. Por lo que podéis ignorar la parte de las capturas y demás. En UP05 vamos a tener una de git + github. ¡Mucho ánimo!
+
 **Módulo Profesional:** 0487 - Entornos de Desarrollo
 **Ciclos Formativos:** DAM / DAW
 
