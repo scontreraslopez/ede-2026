@@ -6,21 +6,21 @@ El módulo recorre el desarrollo del software de extremo a extremo: lenguajes y 
 
 ## Índice de unidades
 
-| UP | Unidad | Ampliación |
-|---|---|---|
-| [UP01](UP01.md) | Desarrollo del software | [UP01 (ampliación)](UP01-ampliacion.md) |
-| [UP02](UP02.md) | Entornos de desarrollo. Instalación y configuración | Pendiente revisión |
-| [UP03](UP03.md) | Depuración de código | Pendiente revisión |
-| UP04 | Sistema de control de versiones | |
-| UP05 | GitHub. Desarrollo colaborativo e integración con el IDE | |
-| UP06 | Fases en el desarrollo y ejecución del software | |
-| UP07 | Diseño orientado a objetos | |
-| UP08 | Diagramas de clases | |
-| UP09 | UML. Diagramas de comportamiento | |
-| UP10 | Diseño de pruebas | |
-| UP11 | Pruebas automáticas | |
-| UP12 | Optimización del código. Refactorización | |
-| UP13 | Análisis y documentación de código | |
+| UP | Unidad | Ampliación | Actividades |
+|---|---|---|---|
+| [UP01](UP01.md) | Desarrollo del software | [UP01 (ampliación)](UP01-ampliacion.md) | |
+| [UP02](UP02.md) | Entornos de desarrollo. Instalación y configuración | [UP02 (ampliación)](UP02-ampliacion.md) | |
+| [UP03](UP03.md) | Depuración de código | | [¡A la caza del bug!](UP03-actividad.md) |
+| [UP04](UP04.md) | Sistema de control de versiones | | [Prácticas formativas](UP04-actividades-formativas.md) |
+| [UP05](UP05.md) | GitHub. Desarrollo colaborativo e integración con el IDE | | |
+| UP06 | Fases en el desarrollo y ejecución del software | | |
+| UP07 | Diseño orientado a objetos | | |
+| UP08 | Diagramas de clases | | |
+| UP09 | UML. Diagramas de comportamiento | | |
+| UP10 | Diseño de pruebas | | |
+| UP11 | Pruebas automáticas | | |
+| UP12 | Optimización del código. Refactorización | | |
+| UP13 | Análisis y documentación de código | | |
 
 ## Entorno de trabajo
 
