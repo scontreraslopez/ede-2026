@@ -12,7 +12,7 @@ El módulo recorre el desarrollo del software de extremo a extremo: lenguajes y 
 | [UP02](UP02.md) | Entornos de desarrollo. Instalación y configuración | [UP02 (ampliación)](UP02-ampliacion.md) | |
 | [UP03](UP03.md) | Depuración de código | | [¡A la caza del bug!](UP03-actividad.md) |
 | [UP04](UP04.md) | Sistema de control de versiones | | [Prácticas formativas](UP04-actividades-formativas.md) |
-| [UP05](UP05.md) | GitHub. Desarrollo colaborativo e integración con el IDE | | |
+| [UP05](UP05.md) | GitHub. Desarrollo colaborativo e integración con el IDE | | [Pixel War EDE](UP05-actividad.md) |
 | UP06 | Fases en el desarrollo y ejecución del software | | |
 | UP07 | Diseño orientado a objetos | | |
 | UP08 | Diagramas de clases | | |
